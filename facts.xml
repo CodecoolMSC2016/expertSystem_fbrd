@@ -1,0 +1,71 @@
+<KM>
+	<Fact id="pluggedProb">
+		<Desctription value="Your brain is probably damaged."/>
+		<Evals>
+			<Eval id="plugged">false</Eval>
+		</Evals>	
+	</Fact>
+	
+	<Fact id="noiseProb">
+		<Desctription value="Turn off your computer immediately!!!"/>
+		<Evals>
+			<Eval id="noise">true</Eval>
+		</Evals>	
+	</Fact>
+	
+	<Fact id="soundProb">
+		<Desctription value="You should try installing your sound card driver."/>
+		<Evals>
+			<Eval id="sound">false</Eval>
+		</Evals>	
+	</Fact>
+	
+	<Fact id="internetProb">
+		<Desctription value="Plug your ethernet cable in and try installing your ethernet driver."/>
+		<Evals>
+			<Eval id="internet">false</Eval>
+		</Evals>	
+	</Fact>
+	
+	<Fact id="browserProb">
+		<Desctription value="You're using IE?!? PLease stop. Use Google Chrome isntead!"/>
+		<Evals>
+			<Eval id="browser">true</Eval>
+		</Evals>	
+	</Fact>
+	
+	<Fact id="restartProb">
+		<Desctription value="Something might be overheating (CPU)"/>
+		<Evals>
+			<Eval id="restart">true</Eval>
+		</Evals>	
+	</Fact>
+	
+	<Fact id="tempProb">
+		<Desctription value="Your computer is overheating!!!"/>
+		<Evals>
+			<Eval id="temp">false</Eval>
+		</Evals>	
+	</Fact>
+	
+	<Fact id="serviceCenter">
+		<Desctription value="You have hardware issue. Contact the nearest ServiceCenter"/>
+		<Evals>
+			<Eval id="noise">true</Eval>
+			<Eval id="temp">false</Eval>
+		</Evals>	
+	</Fact>
+	
+	<Fact id="worksProperly">
+		<Desctription value="Your system works properly, No problem found!"/>
+		<Evals>
+			<Eval id="plugged">true</Eval>
+			<Eval id="noise">false</Eval>
+			<Eval id="sound">true</Eval>
+			<Eval id="internet">true</Eval>
+			<Eval id="browser">false</Eval>
+			<Eval id="restart">false</Eval>
+			<Eval id="temp">true</Eval>
+		</Evals>	
+	</Fact>
+</KM>
