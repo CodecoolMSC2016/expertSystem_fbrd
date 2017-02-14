@@ -1,0 +1,79 @@
+<Rules>
+    <Rule id="plugged">
+        <Question>Is your computer plugged in?</Question>
+        <Answer>
+            <Selection value="true">
+                <SingleValue value="yes"/>
+            </Selection>
+            <Selection value="false">
+                <SingleValue value="false"/>
+            </Selection>
+        </Answer>
+    </Rule>
+    <Rule id="noise">
+        <Question>Did you hear any loud noise from the computer when it loaded?</Question>
+        <Answer>
+            <Selection value="true">
+                <SingleValue value="yes"/>
+            </Selection>
+            <Selection value="false">
+                <SingleValue value="false"/>
+            </Selection>
+        </Answer>
+    </Rule>
+    <Rule id="sound">
+        <Question>Do you have sound?</Question>
+        <Answer>
+            <Selection value="true">
+                <SingleValue value="yes"/>
+            </Selection>
+            <Selection value="false">
+                <SingleValue value="false"/>
+            </Selection>
+        </Answer>
+    </Rule>
+    <Rule id="internet">
+        <Question>Do you have internet connection?</Question>
+        <Answer>
+            <Selection value="true">
+                <SingleValue value="yes"/>
+            </Selection>
+            <Selection value="false">
+                <SingleValue value="false"/>
+            </Selection>
+        </Answer>
+    </Rule>
+    <Rule id="browser">
+        <Question>Are you using Internet Explorer?</Question>
+        <Answer>
+            <Selection value="true">
+                <SingleValue value="yes"/>
+            </Selection>
+            <Selection value="false">
+                <SingleValue value="false"/>
+            </Selection>
+        </Answer>
+    </Rule>
+    <Rule id="restart">
+        <Question>Does your computer restart randomly?</Question>
+        <Answer>
+            <Selection value="true">
+                <SingleValue value="yes"/>
+            </Selection>
+            <Selection value="false">
+                <SingleValue value="false"/>
+            </Selection>
+        </Answer>
+    </Rule>
+    <Rule id="temp">
+        <Question>Whats your CPU temperature?</Question>
+        <Answer>
+            <Selection value="true">
+                <MultipleValue value="40,50,60"/>
+            </Selection>
+            <Selection value="false">
+                <MultipleValue value="70,80"/>
+            </Selection>
+        </Answer>
+    </Rule>
+</Rules>
