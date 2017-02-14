@@ -6,5 +6,8 @@ public class FactParser implements XmlParser{
 		// TODO Auto-generated method stub
 		
 	}
+	public FactRepository getFactRepository(){
+		return null;
+	}
 
 }

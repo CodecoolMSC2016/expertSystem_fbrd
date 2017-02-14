@@ -5,6 +5,24 @@ import java.util.Set;
  */
 public class Fact {
     private String description;
+    private String ID;
+    private String value;
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
 
     public Fact(String description){
         this.description = description;
