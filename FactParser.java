@@ -1,4 +1,3 @@
-
 public class FactParser implements XmlParser{
 
 	@Override
