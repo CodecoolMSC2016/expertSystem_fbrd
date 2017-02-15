@@ -6,7 +6,7 @@
                 <SingleValue value="yes"/>
             </Selection>
             <Selection value="false">
-                <SingleValue value="false"/>
+                <SingleValue value="no"/>
             </Selection>
         </Answer>
     </Rule>
@@ -17,7 +17,7 @@
                 <SingleValue value="yes"/>
             </Selection>
             <Selection value="false">
-                <SingleValue value="false"/>
+                <SingleValue value="no"/>
             </Selection>
         </Answer>
     </Rule>
@@ -28,7 +28,7 @@
                 <SingleValue value="yes"/>
             </Selection>
             <Selection value="false">
-                <SingleValue value="false"/>
+                <SingleValue value="no"/>
             </Selection>
         </Answer>
     </Rule>
@@ -39,7 +39,7 @@
                 <SingleValue value="yes"/>
             </Selection>
             <Selection value="false">
-                <SingleValue value="false"/>
+                <SingleValue value="no"/>
             </Selection>
         </Answer>
     </Rule>
@@ -50,7 +50,7 @@
                 <SingleValue value="yes"/>
             </Selection>
             <Selection value="false">
-                <SingleValue value="false"/>
+                <SingleValue value="no"/>
             </Selection>
         </Answer>
     </Rule>
@@ -61,7 +61,7 @@
                 <SingleValue value="yes"/>
             </Selection>
             <Selection value="false">
-                <SingleValue value="false"/>
+                <SingleValue value="no"/>
             </Selection>
         </Answer>
     </Rule>
