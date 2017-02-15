@@ -10,31 +10,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RuleParser implements XmlParser{
+    private Document document;
 
     public void loadXmlDocument(String fullPath){
         try {
-            Map<String, String> ruleMap = new HashMap<String, String>();
             File inputFile = new File(fullPath);
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
-            Document document = builder.parse(inputFile);
-            NodeList nodeList = document.getElementsByTagName("Rule");
-            for (int i = 0; i < nodeList.getLength(); i++){
-                Element element = (Element) nodeList.item(i);
-                NodeList childList = element.getChildNodes();
-                for (int j = 0; j < childList.getLength(); j++){
-                    Node childElement = (Node) childList.item(j);
-                    ruleMap.put(element.getAttribute("id"), childElement.getTextContent().trim());
-                    System.out.println(childElement.getTextContent().replace("\n", ""));
-                }
-
-                //Element child = (Element) element.getFirstChild();
-                //System.out.println(element.getAttribute("id") + " " + child.getTextContent());
-            }
-            for (Map.Entry<String, String> entry: ruleMap.entrySet()) {
-                System.out.print(entry.getValue());
-            }
-
+            document = builder.parse(inputFile);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -42,13 +25,51 @@ public class RuleParser implements XmlParser{
     }
 
     public RuleRepository getRuleRepository(){
+        loadXmlDocument("src/rules.xml");
+        Map<String, String> questionMap = new HashMap<String, String>();
+        Map<String, Map<String, String[][]>> valueMap = new HashMap<String, Map<String, String[][]>>();
+        Map<String, String[][]> innerMap = new HashMap<String, String[][]>();
+        NodeList nodeList = document.getElementsByTagName("Rule");
+        for (int i = 0; i < nodeList.getLength(); i++){
+            Element ruleElement = (Element) nodeList.item(i);
+            String ruleID = ruleElement.getAttribute("id");
+            NodeList childList = ruleElement.getElementsByTagName("Question");
+            for (int index = 0; index < childList.getLength(); index++){
+                if (childList.item(index).getNodeType() == Node.ELEMENT_NODE) {
+                    Element childElement = (Element) childList.item(index);
+                    questionMap.put(ruleID, childElement.getTextContent());
+                }
+            }
+            NodeList answers = ruleElement.getElementsByTagName("Answer");
+            Element answer = (Element) answers.item(0);
+            NodeList selectionList = answer.getElementsByTagName("Selection");
+            String[][] selectionResults = new String[2][1];
+
+            for (int index = 0; index < selectionList.getLength(); index++){
+                if (selectionList.item(index).getNodeType() == Node.ELEMENT_NODE) {
+                    Element selectionValue = (Element) selectionList.item(index);
+                    NodeList singleValues = selectionValue.getElementsByTagName("SingleValue");
+                    NodeList multipleValues = selectionValue.getElementsByTagName("MultipleValue");
+                    if (multipleValues.item(0) == null) {
+                        Element singleValue = (Element) singleValues.item(0);
+                        selectionResults[index][0] = singleValue.getNodeName();
+                    }else {
+                        Element multipleValue = (Element) multipleValues.item(0);
+                        selectionResults[index][0] = multipleValue.getNodeName();
+                    }
+                }
+            }
+            innerMap.put(ruleID, selectionResults);
+            valueMap.put(ruleID, innerMap);
+            innerMap = new HashMap<String, String[][]>();
+        }
 
         return null;
     }
 
     public static void main(String[] args){
         RuleParser ruleParser = new RuleParser();
-        ruleParser.loadXmlDocument("src/rules.xml");
+        ruleParser.getRuleRepository();
     }
 
 }
