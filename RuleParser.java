@@ -75,9 +75,4 @@ public class RuleParser implements XmlParser{
         System.out.println(questionMap);
         return new RuleRepository(questionMap, valueMap);
     }
-
-    public static void main(String[] args){
-        RuleParser ruleParser = new RuleParser();
-        ruleParser.getRuleRepository();
-    }
 }
