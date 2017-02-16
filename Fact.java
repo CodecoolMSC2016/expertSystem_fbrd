@@ -8,7 +8,8 @@ public class Fact {
     private HashMap<String, Boolean> evalMap;
     
     public Fact(String description){
-    	this.description = description;    	
+    	this.description = description;   
+    	this.evalMap = new HashMap<String, Boolean>();
     }
 
     public String getID() {
