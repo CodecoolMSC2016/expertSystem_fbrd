@@ -1,16 +1,14 @@
+import java.util.HashMap;
 import java.util.Set;
 
 public class Fact {
-    private String description;
+    
     private String ID;
-    private String value;
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
+    private String description;
+    private HashMap<String, Boolean> valuesMap;
+    
+    public Fact(String description){
+    	this.description = description;    	
     }
 
     public String getID() {
@@ -21,11 +19,8 @@ public class Fact {
         this.ID = ID;
     }
 
-    public Fact(String description){
-        this.description = description;
-    }
-
     public void getFactValueByID(String id, boolean value){
+    	
     }
 
     public Set<String> getIDSet(){
