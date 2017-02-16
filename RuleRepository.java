@@ -18,7 +18,9 @@ public class RuleRepository {
 	public void createQuestionArray(){
 		int counter = 0;
 		for (Map.Entry entry: questionMap.entrySet()){
-			questionArray[counter] = new Question((String) entry.getKey());
+			String questionID = (String) entry.getKey();
+			String[][] questionValues = valueMap.get(questionID);
+			questionArray[counter] = new Question(questionID, questionValues);
 			counter++;
 		}
 	}
