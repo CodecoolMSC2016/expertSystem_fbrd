@@ -5,17 +5,22 @@ public class FactRepository {
 	private Fact[] factIDs;
 	private HashMap<String,String> factMap;
 	private HashMap<String, HashMap<String,Boolean>> factEvalMap;
+	private FactIterator factIterator;
 	
-	public FactRepository(HashMap<String,String> factMap, HashMap<String, HashMap<String,Boolean>> factEvalMa){
+	public FactRepository(HashMap<String,String> factMap, HashMap<String, HashMap<String,Boolean>> factEvalMap){
 		this.factMap = factMap;
 		this.factEvalMap = factEvalMap;
 		factIDs = new Fact[factMap.size()];
+		factIterator = new FactIterator();
 	}
 	
 	public void fillFactIDs(){
 		int index = 0;
 		for(Map.Entry entry: factMap.entrySet()){
-			factIDs[index] = new Fact((String) entry.getValue());
+			Fact fact = new Fact((String) entry.getValue());
+			factIDs[index] = fact;
+			fact.setID((String) entry.getKey());
+			index++;
 		}
 	}
 
@@ -40,7 +45,7 @@ public class FactRepository {
 	
 
     public Iterator getIterator(){
-    	return null;
+    	return factIterator;
     }
 
     public void addFact(Fact fact){
