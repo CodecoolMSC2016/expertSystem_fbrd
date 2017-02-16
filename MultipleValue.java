@@ -1,12 +1,12 @@
 public class MultipleValue implements Value {
-    private String param;
+    private String[] inputPattern;
 
-    public MultipleValue(String param){
-
-        this.param = param;
+    public MultipleValue(String[] inputPatter){
+        this.inputPattern = inputPatter;
     }
 
     public String[] getInputPattern(){
-        return null;
+
+        return inputPattern;
     }
 }
