@@ -37,17 +37,18 @@ public class FactParser implements XmlParser{
 	
 	
 	public FactRepository getFactRepository(){
+		loadXmlDocument("src/facts.xml");
 		
 		NodeList nList = document.getElementsByTagName("Fact");
         for (int i = 0; i < nList.getLength(); i++) {
         	Node nNode = nList.item(i);
         	Element eElement = (Element) nNode;
-        	System.out.println("Fact : " + eElement.getAttribute("id"));
+        	//System.out.println("Fact : " + eElement.getAttribute("id"));
         	
         	NodeList nList2 = eElement.getElementsByTagName("Desctription"); 
         	Node nNode2 = nList2.item(0);
         	Element eElement2 = (Element) nNode2;
-    		System.out.println("Desc : " + eElement2.getAttribute("value"));
+    		//System.out.println("Desc : " + eElement2.getAttribute("value"));
     		factMap.put(eElement.getAttribute("id"), eElement2.getAttribute("value"));
 
         	
@@ -56,26 +57,20 @@ public class FactParser implements XmlParser{
         	for(int j = 0; j < nList3.getLength(); j++){
         		if (nNode.getNodeType() == Node.ELEMENT_NODE) {            			
         			Element eElement3 = (Element) nList3.item(j);
-            		System.out.println("Evals : " + eElement3.getAttribute("id"));
-            		System.out.println("bool : " + eElement3.getTextContent());
+            		//System.out.println("Evals : " + eElement3.getAttribute("id"));
+            		//System.out.println("bool : " + eElement3.getTextContent());
             		String igaz = "true";
             		innerEvalMap.put(eElement3.getAttribute("id"), igaz.equalsIgnoreCase(eElement3.getTextContent()));
             	}
         	}
-    		System.out.println(innerEvalMap);
+    		//System.out.println(innerEvalMap);
     		factEvalMap.put(eElement.getAttribute("id"), innerEvalMap);
     		innerEvalMap = new HashMap<String,Boolean>();
         }
 		
-		System.out.println(factMap);
-		System.out.println(factEvalMap);
-		return null;
+		//System.out.println(factMap);
+		//System.out.println(factEvalMap);
+		return new FactRepository(factMap,factEvalMap);
 	}
-	
-	public static void main(String[] args){
-        FactParser factParser = new FactParser();
-        factParser.loadXmlDocument("src/facts.xml");
-        factParser.getFactRepository();
-    }
 
 }
