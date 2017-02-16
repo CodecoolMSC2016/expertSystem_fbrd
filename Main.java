@@ -5,6 +5,7 @@ public class Main {
 		FactParser factParser = new FactParser();
 		RuleParser ruleParser = new RuleParser();
 		ESProvider esProvider = new ESProvider(factParser, ruleParser);
+		esProvider.collectAnswers();
 	}
 
 }
