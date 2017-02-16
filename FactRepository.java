@@ -30,7 +30,6 @@ public class FactRepository {
 			String factID = facts[i].getID();
 			HashMap<String,Boolean> evalMap = factEvalMap.get(factID);
 			Set<String> evalIDs = evalMap.keySet();
-			
 			for(String ID : evalIDs){
 				facts[i].setFactValueByID(ID, evalMap.get(ID));
 			}

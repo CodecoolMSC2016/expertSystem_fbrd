@@ -15,6 +15,11 @@ public class Question {
     public String getQuestionDesc(){
         return questionDesc;
     }
+
+    public  String[][] getQuestionValues(){
+        return questionValues;
+    }
+
     public String getQuestion(){
         return question;
     }
@@ -29,7 +34,6 @@ public class Question {
         }else {
             trueValue = new SingleValue(questionValues[TRUE]);
             falseValue = new SingleValue(questionValues[FALSE]);
-
         }
         this.answer.addValue(trueValue, falseValue);
     }

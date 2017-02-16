@@ -10,59 +10,46 @@ public class ESProvider {
 		factRepository = factParser.getFactRepository();
 		answers = new HashMap<>();
 	}
-	
+
+	private String roundValue(String usrInput){
+		if (usrInput.matches("[0-9]+")){
+			int inputNum = Integer.parseInt(usrInput.trim());
+			inputNum = (int)(Math.floor(inputNum/10)*10);
+			usrInput = String.valueOf(inputNum);
+		}
+		return usrInput;
+	}
 	public void collectAnswers(){
 		ruleRepository.createQuestionArray();
 		for (Iterator iter = ruleRepository.getIterator(); iter.hasNext();){
 			Question question = (Question)iter.next();
 			String questionID = question.getQuestion();
 			Scanner scanner = new Scanner(System.in);
-			System.out.println(question.getQuestionDesc() + "??????????????");
+			System.out.println("----------\n" + question.getQuestionDesc());
 			String usrInput = scanner.nextLine();
-			Boolean questionValue = question.getEvaluatedAnswer(usrInput);
-			System.out.println(questionValue);
-			answers.put(questionID, questionValue);
+			usrInput = roundValue(usrInput);
+			while (question.getEvaluatedAnswer(usrInput) == null){
+				String[][] questionValues = question.getQuestionValues();
+				System.out.print("Wrong input.\nPlease enter a value from below: \n");
+				for(String[] values: questionValues){
+					for(String value: values){
+						System.out.print(" "+ value);
+					}
+					System.out.println();
+				}
+				usrInput = scanner.nextLine();
+			}
+		Boolean questionValue = question.getEvaluatedAnswer(usrInput);
+		answers.put(questionID, questionValue);
 		}
 	}
 
-
-
-	public boolean getAnswerByQuestion(String questionID){
-
-		return false;
-	}
-	
 	public String evaluate(){
-		ArrayList<String> matchedResults = new ArrayList<String>();
-		boolean factValue;
-		String entryID;
-
+		String correctFacts = null;
 		factRepository.fillFactIDs();
 		factRepository.setEvalsToFact();
-		Boolean evaleted = null;
 		Fact[] facts = factRepository.getFacts();
-		/*for(Iterator iter = factRepository.getIterator(); iter.hasNext();){
-			Fact fact = (Fact)iter.next();
-			Set<String> evalSet = fact.getIDSet();
-			System.out.println(evalSet);
-			System.out.println("fasz");
-			for(String evalID : evalSet){
-				factValue = fact.getValueByID(evalID);
 
-				//System.out.println("evalID: " + answers.get(evalID) + ", factValue: " + factValue);
-				Boolean answerValue = answers.get(evalID);
-				if(!(answerValue == null)) {
-					if (!answers.get(evalID).equals(factValue)) {
-							continue;
-					}
-				}
-			}
-			matchedResults.add(fact.getDescription());
-			System.out.println(fact.getDescription());
-		}
-		for (String result: matchedResults){
-			//System.out.println(result);
-		}*/
 		for(int i = 0; i < facts.length; i++){
 			Set<String> evalSet = facts[i].getIDSet();
 			int counter =0;
@@ -73,13 +60,15 @@ public class ESProvider {
 							counter++;
 						}
 					}
-
 				}
 			}
 			if(counter == evalSet.size()){
-				System.out.println(facts[i].getDescription());
+				if (correctFacts == null){
+					correctFacts = new String();
+				}
+				correctFacts += " ~ " + facts[i].getDescription() + "\n";
 			}
 		}
-		return null;
+		return correctFacts;
 	}
 }

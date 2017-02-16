@@ -69,10 +69,10 @@
         <Question>Whats your CPU temperature?</Question>
         <Answer>
             <Selection value="true">
-                <MultipleValue value="40,50,60"/>
+                <MultipleValue value="30,40,50,60"/>
             </Selection>
             <Selection value="false">
-                <MultipleValue value="70,80"/>
+                <MultipleValue value="70,80,90,100"/>
             </Selection>
         </Answer>
     </Rule>

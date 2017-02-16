@@ -60,7 +60,7 @@ public class RuleParser implements XmlParser{
     }
 
     public RuleRepository getRuleRepository(){
-        loadXmlDocument("src/rules.xml");
+        loadXmlDocument("rules.xml");
         NodeList nodeList = document.getElementsByTagName("Rule");
         Map<String, String> questionMap = new HashMap<String, String>();
         Map<String, String[][]> valueMap = new HashMap<String, String[][]>();
