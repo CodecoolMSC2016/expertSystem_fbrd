@@ -5,7 +5,7 @@ public class Question {
         this.question = question;
     }
     public String getQuestion(){
-        return null;
+        return question;
     }
 
     public void setAnswerEvaluator(Answer answer){
@@ -13,6 +13,7 @@ public class Question {
     }
 
     public boolean getEvaluatedAnswer(String input){
+
         return false;
     }
 }
