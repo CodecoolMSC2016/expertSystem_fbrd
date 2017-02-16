@@ -2,7 +2,7 @@ public class Answer {
     private Value valueTrue;
     private Value valueFalse;
 
-    public Boolean evaluateAnserbyInput(String input){
+    public Boolean evaluateAnswerbyInput(String input){
         for (String value : valueTrue.getInputPattern()){
             if (input.equals(value)){
                 return true;
