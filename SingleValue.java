@@ -1,12 +1,11 @@
 public class SingleValue implements Value {
-    private String param;
+    private String[] inputPattern;
 
-    public SingleValue(String param){
-
-        param = param;
+    public SingleValue(String[] inputPattern){
+        this.inputPattern = inputPattern;
     }
 
     public String[] getInputPattern(){
-        return null;
+        return inputPattern;
     }
 }
