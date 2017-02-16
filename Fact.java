@@ -5,7 +5,7 @@ public class Fact {
     
     private String ID;
     private String description;
-    private HashMap<String, Boolean> valuesMap;
+    private HashMap<String, Boolean> evalMap;
     
     public Fact(String description){
     	this.description = description;    	
@@ -19,19 +19,19 @@ public class Fact {
         this.ID = ID;
     }
 
-    public void getFactValueByID(String id, boolean value){
-    	
+    public void setFactValueByID(String id, boolean value){
+        evalMap.put(id, value);
     }
 
     public Set<String> getIDSet(){
-        return null;
+        return evalMap.keySet();
     }
 
     public boolean getValueByID(String id){
-        return false;
+        return evalMap.get(id);
     }
 
     public String getDescription(){
-        return null;
+        return description;
     }
 }
