@@ -47,15 +47,15 @@ public class RuleParser implements XmlParser{
                     NodeList multipleValues = selectionValue.getElementsByTagName("MultipleValue");
                     if (multipleValues.item(0) == null) {
                         Element singleValue = (Element) singleValues.item(0);
-                        selectionResults[index2][0] = singleValue.getNodeName();
+                        selectionResults[index2] = singleValue.getNodeName().split(",");
                     }else {
                         Element multipleValue = (Element) multipleValues.item(0);
-                        selectionResults[index2][0] = multipleValue.getNodeName();
+                        selectionResults[index2] = multipleValue.getNodeName().split(",");
                     }
                 }
             }
             valueMap.put(ruleID, selectionResults);
-            selectionResults = new String[2][1];
+            selectionResults = new String[2][];
         }
     }
 
