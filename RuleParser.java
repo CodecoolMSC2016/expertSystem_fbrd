@@ -71,8 +71,6 @@ public class RuleParser implements XmlParser{
             addQuestionMapEntry(ruleElement, ruleID, questionMap);
             addValueMapEntry(ruleElement, ruleID, valueMap);
         }
-        System.out.println(valueMap);
-        System.out.println(questionMap);
         return new RuleRepository(questionMap, valueMap);
     }
 }
