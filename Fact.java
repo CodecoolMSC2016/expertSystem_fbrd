@@ -13,6 +13,7 @@ public class Fact {
     }
 
     public String getID() {
+
         return ID;
     }
 

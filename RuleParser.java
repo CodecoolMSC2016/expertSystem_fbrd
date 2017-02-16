@@ -47,10 +47,10 @@ public class RuleParser implements XmlParser{
                     NodeList multipleValues = selectionValue.getElementsByTagName("MultipleValue");
                     if (multipleValues.item(0) == null) {
                         Element singleValue = (Element) singleValues.item(0);
-                        selectionResults[index2] = singleValue.getNodeName().split(",");
+                        selectionResults[index2] = singleValue.getAttribute("value").split(",");
                     }else {
                         Element multipleValue = (Element) multipleValues.item(0);
-                        selectionResults[index2] = multipleValue.getNodeName().split(",");
+                        selectionResults[index2] = multipleValue.getAttribute("value").split(",");
                     }
                 }
             }

@@ -19,8 +19,11 @@ public class RuleRepository {
 		int counter = 0;
 		for (Map.Entry entry: questionMap.entrySet()){
 			String questionID = (String) entry.getKey();
+			String questionDesc = (String) entry.getValue();
 			String[][] questionValues = valueMap.get(questionID);
-			questionArray[counter] = new Question(questionID, questionValues);
+			Question question = new Question(questionID, questionValues, questionDesc);
+			question.setAnswerEvaluator(new Answer());
+			questionArray[counter] = question;
 			counter++;
 		}
 	}
@@ -29,7 +32,7 @@ public class RuleRepository {
 
 		@Override
 		public boolean hasNext() {
-			if (index < questionMap.size()){
+			if (index < questionArray.length){
 				return true;
 			}else {
 				return false;
@@ -47,10 +50,12 @@ public class RuleRepository {
 	}
 
 	public Question addQuestion(String id, String question){
+
 		return null;
 	}
 
 	public Iterator getIterator(){
+
 		return questionIterator;
 	}
 

@@ -4,12 +4,16 @@ public class Answer {
 
     public Boolean evaluateAnswerbyInput(String input){
         for (String value : valueTrue.getInputPattern()){
-            if (input.equals(value)){
+            if (input.toLowerCase().equals(value)){
+                System.out.println(value);
+                System.out.println("input: " + input);
                 return true;
             }
         }
         for (String value : valueFalse.getInputPattern()){
-            if (input.equals(value)){
+            if (input.toLowerCase().equals(value)){
+                System.out.println(value);
+                System.out.println("input: " + input);
                 return false;
             }
         }

@@ -32,7 +32,7 @@ public class FactRepository {
 			Set<String> evalIDs = evalMap.keySet();
 			
 			for(String ID : evalIDs){
-				facts[i].setFactValueByID(ID, evalMap.get(ID).equals("true"));				
+				facts[i].setFactValueByID(ID, evalMap.get(ID));
 			}
 		}
 	}
