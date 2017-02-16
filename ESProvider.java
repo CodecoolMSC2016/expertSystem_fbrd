@@ -7,7 +7,7 @@ public class ESProvider {
 
 	public ESProvider(FactParser factParser, RuleParser ruleParser){
 		ruleRepository = ruleParser.getRuleRepository();
-		//factRepository = factParser.getFactRepository();
+		factRepository = factParser.getFactRepository();
 	}
 	
 	public void collectAnswers(){
@@ -22,6 +22,12 @@ public class ESProvider {
 	}
 	
 	public String evaluate(){
+		factRepository.fillFactIDs();
+		for (Iterator iter = factRepository.getIterator(); iter.hasNext();){
+			//System.out.println(((Fact)iter.next()).getDescription());
+		}
+		
+		
 		return null;
 	}
 }

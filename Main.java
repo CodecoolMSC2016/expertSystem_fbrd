@@ -6,6 +6,7 @@ public class Main {
 		RuleParser ruleParser = new RuleParser();
 		ESProvider esProvider = new ESProvider(factParser, ruleParser);
 		esProvider.collectAnswers();
+		esProvider.evaluate();
 	}
 
 }
