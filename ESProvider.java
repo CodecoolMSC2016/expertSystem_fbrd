@@ -7,11 +7,14 @@ public class ESProvider {
 
 	public ESProvider(FactParser factParser, RuleParser ruleParser){
 		ruleRepository = ruleParser.getRuleRepository();
-		factRepository = factParser.getFactRepository();
+		//factRepository = factParser.getFactRepository();
 	}
 	
 	public void collectAnswers(){
-		
+		ruleRepository.createQuestionArray();
+		for (Iterator iter = ruleRepository.getIterator(); iter.hasNext();){
+			System.out.println(((Question)iter.next()).getQuestion());
+		}
 	}
 	
 	public boolean getAnswerByQuestion(String questionID){
