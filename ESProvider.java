@@ -1,4 +1,5 @@
 import java.util.Map;
+import java.util.Set;
 
 public class ESProvider {
 	private RuleRepository ruleRepository;
@@ -22,11 +23,30 @@ public class ESProvider {
 	}
 	
 	public String evaluate(){
+		System.out.println("---------------------------------------");
 		factRepository.fillFactIDs();
-		for (Iterator iter = factRepository.getIterator(); iter.hasNext();){
-			//System.out.println(((Fact)iter.next()).getDescription());
-		}
+		factRepository.setEvalsToFact();
+		Fact[] facts = factRepository.getFacts();
 		
+		for(int i = 0; i < facts.length; i++){
+			System.out.println(facts[i].getID());
+			System.out.println(facts[i].getDescription());
+			
+			Set<String> evalSet = facts[i].getIDSet();
+			for(String evalID : evalSet){
+				System.out.println(evalID +": "+ facts[i].getValueByID(evalID));
+			}
+			
+
+			System.out.println("--------");
+		}
+			
+		
+		
+		
+		for (Iterator iter = factRepository.getIterator(); iter.hasNext();){
+			System.out.println(((Fact)iter.next()).getDescription());		
+		}
 		
 		return null;
 	}
